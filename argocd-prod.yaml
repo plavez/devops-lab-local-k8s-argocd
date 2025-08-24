@@ -1,0 +1,34 @@
+# Highly Available mode with autoscaling require minimum 3 nodes!
+redis-ha:
+  enabled: false
+            
+controller:
+  replicas: 1
+
+server:
+ service:
+  type:ClusterIP
+           
+server:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+
+repoServer:
+  autoscaling:
+    enabled: false
+    minReplicas: 2  
+            
+applicationSet:
+  replicas: 2
+            
+# Fixing issue with Stuck Processing for Ingress resource
+
+server:
+  config:
+    resource.customizations: |
+      networking.k8s.io/Ingress:
+        health.lua: |
+          hs = {}
+          hs.status = "Healthy"
+          return hs

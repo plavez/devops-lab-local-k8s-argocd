@@ -1,4 +1,4 @@
-# Argo CD on two kind clusters (dev & prod) via Terraform.Monitoring Prometheus - Grafana.
+# Argo CD on two kind clusters (dev & prod) via Terraform
 
 This repo deploys **Argo CD** into two local **kind** Kubernetes clusters — `dev` and `prod` — using **Terraform** and the **App-of-Apps** (Root Application) pattern.
 
